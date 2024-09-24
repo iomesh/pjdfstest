@@ -57,7 +57,7 @@ expect 0 unlink ${n0}
 # Update parent directory ctime/mtime if file didn't exist.
 expect 0 chown . 0 0
 time=`${fstest} stat . ctime`
-sleep 1
+sleep 2
 expect 0 open ${n0} O_CREAT,O_WRONLY 0644
 atime=`${fstest} stat ${n0} atime`
 test_check $time -lt $atime
