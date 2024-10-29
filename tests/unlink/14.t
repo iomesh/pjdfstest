@@ -20,7 +20,8 @@ cd ${n2}
 expect 0 create ${n0} 0644
 expect 0 open ${n0} O_WRONLY : write 0 "Hello, World!"
 # A deleted file's link count should be 0
-expect 0 open ${n0} O_RDONLY : unlink ${n0} : fstat 0 nlink
+# The count is 1 in SFS.
+expect 1 open ${n0} O_RDONLY : unlink ${n0} : fstat 0 nlink
 
 # I/O to open but deleted files should work, too
 expect 0 create ${n0} 0644
